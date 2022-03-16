@@ -1,11 +1,21 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
-    return '<h1>hello, world<h1>'
+def render_homepage():
+    return render_template('home.html')
 
 
-app.run(host='0.0.0.0')
+@app.route('/menu')
+def render_menu_page():
+    return render_template('menu.html')
+
+
+@app.route('/contact')
+def render_contact_page():
+    return render_template('contact.html')
+
+
+app.run(host='0.0.0.0', debug=True)
